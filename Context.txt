@@ -1,0 +1,23 @@
+<Message 
+id=695972466677514240 
+channel=
+	<TextChannel 
+	id=694628706056142902 
+	name='Allgemein' 
+	position=0 
+	nsfw=False 
+	news=False 
+	category_id=694628706056142900> 
+type=<MessageType.default: 0> 
+author=
+	<Member 
+	id=220238224923164672 
+	name='RikoRick' 
+	discriminator='4226' 
+	bot=False 
+	nick=None 
+	guild=<Guild id=694628706056142899
+	name='Bot test' 
+	shard_id=None chunked=True member_count=8>> 
+	
+flags=<MessageFlags value=0>>

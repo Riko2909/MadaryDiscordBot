@@ -1,0 +1,15 @@
+{
+  "perms": {
+    "lvl1": [
+      "Support"
+    ],
+    "lvl2": [
+      "Admin"
+    ],
+    "lvl3": [
+      "Owner",
+      "Admin"
+    ]
+  },
+  "pretty": false
+}
