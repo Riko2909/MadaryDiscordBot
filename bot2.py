@@ -5,8 +5,7 @@ from commands import cmd_ping, cmd_counter, cmd_clear, cmd_settings
 from cmdreqfiles import unicodetext
 
 client = general.client
-token2 = "Njk1Njk2NjAyNTQ2OTYyNTUz.Xod8Iw.JmJtARs70YkGRVhSZgWYl1-mVWs"
-
+token2 = ""
 
 def is_ascii(s):
     return all(ord(c) < 128 for c in s)

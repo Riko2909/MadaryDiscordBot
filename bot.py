@@ -6,8 +6,8 @@ from cmdreqfiles import unicodetext
 import os
 
 client = general.client
-# token = "Njk0NjI4NDMwMjA1MDI2MzU4.XoOa1A.mBCNZw5nYJVBeJAc8OPaWIcFf9Q"
-token = "Njk0NjI4NDMwMjA1MDI2MzU4.XoOZIw.6k88ufDMwAifafbrGGluvUR7Ix0"
+token = open('token.txt', 'r').readlines()[0]
+
 
 print(discord.__version__)
 
