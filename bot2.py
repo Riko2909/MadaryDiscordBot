@@ -1,11 +1,14 @@
 import json
 import discord
 import general
-from commands import cmd_ping, cmd_counter, cmd_clear, cmd_settings
+from commands import cmd_ping, cmd_counter, cmd_clear, cmd_settings, cmd_rdmhero, cmd_smell, cmd_createVC
 from cmdreqfiles import unicodetext
 
 client = general.client
-token2 = ""
+token = open('token2.txt', 'r').readlines()[0]
+
+
+print(discord.__version__)
 
 def is_ascii(s):
     return all(ord(c) < 128 for c in s)
@@ -80,4 +83,4 @@ async def on_member_update(before, after):
         print("-------------\nPermission Denied or Other Error")
 
 
-client.run(token2)
+client.run(token)

@@ -1,9 +1,8 @@
 import json
 import discord
 import general
-from commands import cmd_ping, cmd_counter, cmd_clear, cmd_settings, cmd_rdmhero, cmd_smell
+from commands import cmd_ping, cmd_counter, cmd_clear, cmd_settings, cmd_rdmhero, cmd_smell, cmd_createVC
 from cmdreqfiles import unicodetext
-import os
 
 client = general.client
 token = open('token.txt', 'r').readlines()[0]
