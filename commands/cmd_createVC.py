@@ -33,6 +33,9 @@ async def createVC(ctx):
 
 @client.event
 async def on_voice_state_update(member, before, after):
+
+    print(before)
+
     if before.channel is None:
         return
 
