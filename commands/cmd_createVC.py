@@ -33,11 +33,11 @@ async def createVC(ctx):
 
 @client.event
 async def on_voice_state_update(member, before, after):
-
-    print(before)
-
     if before.channel is None:
         return
+
+    print(before.channel.name)
+    print(f"{member.display_name}'s Channel")
 
     if before.channel.name == f"{member.display_name}'s Channel":
         print(f"Privater Channel von {member.display_name} wurde gelöscht!")
