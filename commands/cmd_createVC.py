@@ -4,6 +4,8 @@ import general
 
 client = general.client
 
+channellist = {}
+
 
 @client.command(aliases=['cvc', 'createvoice'])
 async def createVC(ctx):
@@ -28,7 +30,9 @@ async def createVC(ctx):
         return await ctx.send('Du musst in einem Voicechannel sein um diesen Command auszuführen!')
 
     await author.move_to(channel)
-    await ctx.send("Viel Spaß in deinem temporären Channel! :)")
+    channellist[channel.id] = author.id
+    print(channellist)
+    await ctx.send(f"Viel Spaß in deinem temporären Channel! {author.display_name} :)")
 
 
 @client.event
@@ -39,6 +43,7 @@ async def on_voice_state_update(member, before, after):
     if before.channel == after.channel:
         return
 
-    if before.channel.name == f"{member.name}'s Channel":
+    if channellist.get(before.channel.id) == member.id:
+        channellist.pop(before.channel.id)
         print(f"Privater Channel von {member.display_name} wurde gelöscht!")
         await before.channel.delete()
