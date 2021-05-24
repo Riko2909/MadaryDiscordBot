@@ -16,8 +16,12 @@ async def createVC(ctx):
         # Exiting if the user is not in a voice channel
         return await ctx.send('Du musst in einem Voicechannel sein um diesen Command auszuführen!')
 
-    channel = await guild.create_voice_channel(f"{author.name}'s Channel",
-                                               category=discord.utils.get(guild.categories, name="Sprachkanäle", ))
+    if author.id == 341907606388080642:
+        channel = await guild.create_voice_channel(f"Nicks's Pimmel ist klein",
+                                                   category=discord.utils.get(guild.categories, name="Sprachkanäle", ))
+    else:
+        channel = await guild.create_voice_channel(f"{author.name}'s Channel",
+                                                   category=discord.utils.get(guild.categories, name="Sprachkanäle", ))
     await channel.set_permissions(target=author,
                                   view_channel=True,
                                   connect=True,
