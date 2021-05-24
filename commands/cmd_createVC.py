@@ -36,6 +36,9 @@ async def on_voice_state_update(member, before, after):
     if before.channel is None:
         return
 
+    if before.channel == after.channel:
+        return
+
     if before.channel.name == f"{member.name}'s Channel":
         print(f"Privater Channel von {member.display_name} wurde gelöscht!")
         await before.channel.delete()
