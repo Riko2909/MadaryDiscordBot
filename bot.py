@@ -1,7 +1,7 @@
 import json
 import discord
 import general
-from commands import cmd_ping, cmd_counter, cmd_clear, cmd_settings, cmd_rdmhero, cmd_smell, cmd_createVC
+from commands import cmd_ping, cmd_counter, cmd_clear, cmd_settings, cmd_rdmhero, cmd_smell, cmd_createVC, cmd_musicbot
 from cmdreqfiles import unicodetext
 
 client = general.client
