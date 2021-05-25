@@ -21,7 +21,6 @@ def check_queue(server, voiceclient):
         return
 
     if queue[server]:
-        print(queue[server])
         voiceclient.play(FFmpegOpusAudio(queue[server].pop(0), **FFMPEG_OPTIONS),
                          after=lambda x: check_queue(server, voiceclient))
 
