@@ -17,7 +17,7 @@ def get_info(url):
 
 
 def check_queue(server, voiceclient):
-    if server not in queue:
+    if server not in queue or not voiceclient.is_connected():
         return
 
     if queue[server]:
