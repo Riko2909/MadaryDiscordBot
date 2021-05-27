@@ -21,8 +21,11 @@ def check_queue(server, voiceclient):
         return
 
     if queue[server]:
-        voiceclient.play(FFmpegOpusAudio(queue[server].pop(0), **FFMPEG_OPTIONS),
+        INFO = get_info(queue[server].pop(0))
+        voiceclient.stop()
+        voiceclient.play(FFmpegOpusAudio(INFO['formats'][0]['url'], **FFMPEG_OPTIONS),
                          after=lambda x: check_queue(server, voiceclient))
+        print(queue[server])
 
 
 @client.command()
@@ -61,9 +64,9 @@ async def play(ctx, url: str = None):
     if voiceclient is None:
         voiceclient = await ctx.author.voice.channel.connect()
 
-    INFO = get_info(url)
-
     if not voiceclient.is_playing():
+        INFO = get_info(url)
+        voiceclient.stop()
         voiceclient.play(
             FFmpegOpusAudio(INFO['formats'][0]['url'], **FFMPEG_OPTIONS),
             after=lambda x: check_queue(server.id, voiceclient)
@@ -72,9 +75,9 @@ async def play(ctx, url: str = None):
     else:
 
         if server.id in queue:
-            queue[server.id].append([INFO['formats'][0]['url']])
+            queue[server.id].append(url)
         else:
-            queue[server.id] = [INFO['formats'][0]['url']]
+            queue[server.id] = [url]
 
         await ctx.send("Es wird bereits ein Song abgespielt! Der Track wird der Warteschlange hinzugefügt :stopwatch: ")
 
@@ -90,8 +93,10 @@ async def next(ctx):
 
     if queue[server.id]:
         voiceclient.stop()
-        voiceclient.play(FFmpegOpusAudio(queue[server.id].pop(0), **FFMPEG_OPTIONS),
+        INFO = get_info(queue[server.id].pop(0))
+        voiceclient.play(FFmpegOpusAudio(INFO['formats'][0]['url'], **FFMPEG_OPTIONS),
                          after=lambda x: check_queue(server.id, voiceclient))
+        await ctx.send(f"Spiele {INFO['title']} :notes:")
     else:
         await ctx.send('Die Warteschlange ist leer!')
 
