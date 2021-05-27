@@ -81,6 +81,16 @@ async def play(ctx, url: str = None):
 
         await ctx.send("Es wird bereits ein Song abgespielt! Der Track wird der Warteschlange hinzugefügt :stopwatch: ")
 
+@client.command()
+async def stop(ctx):
+    if ctx.author.voice is None:
+        # Exiting if the user is not in a voice channel
+        return await ctx.send('Du musst in einem Voicechannel sein um diesen Command auszuführen!')
+
+    voiceclient = ctx.voice_client
+    if voiceclient.is_playing():
+        voiceclient.stop()
+        await ctx.send('Track wurde gestoppt!')
 
 @client.command()
 async def next(ctx):
